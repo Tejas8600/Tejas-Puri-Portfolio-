@@ -1,0 +1,49 @@
+<nav
+  className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 backdrop-blur-lg shadow-md rounded-full transition-all duration-300 ${
+    scrolling ? 'bg-gradient-to-r from-blue-800/90 to-blue-600/90 scale-95' : 'bg-gradient-to-r from-blue-700/50 to-blue-500/50'
+  }`}
+  style={{
+    padding: '8px 48px', // ✅ Small height, increased width
+    border: '1px solid rgba(255, 255, 255, 0.1)', // ✅ Glass effect
+  }}
+>
+  <div className="container mx-auto flex items-center justify-between">
+    {/* ✅ Logo (on one line) */}
+    <a
+      href="/"
+      className="text-xl font-bold tracking-wide mr-20 whitespace-nowrap" // ✅ Prevents wrapping
+      style={{
+        color: '#1f2937', // ✅ Light black color
+      }}
+    >
+      Tejas Portfolio
+    </a>
+
+    {/* ✅ Navbar Links */}
+    <div className="flex gap-12">
+      {[
+        { name: 'Skills', icon: Code },
+        { name: 'Projects', icon: ExternalLink },
+        { name: 'Experience', icon: Briefcase },
+        { name: 'Contact', icon: Mail },
+      ].map(({ name, icon: Icon }) => (
+        <a
+          key={name}
+          href={`#${name.toLowerCase()}`}
+          className={`flex items-center gap-2 text-base font-semibold tracking-wide px-3 py-1.5 transition duration-300 ${
+            scrolling ? 'text-gray-800 hover:text-gray-500' : 'text-gray-700 hover:text-gray-500'
+          }`}
+          style={{
+            transition: 'color 0.3s ease',
+            borderRadius: '8px',
+          }}
+        >
+          <Icon size={16} className="text-gray-500 transition-transform duration-300 group-hover:scale-110" />
+          {name}
+          {/* ✅ Smooth Underline Effect */}
+          <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 hover:w-full rounded-full shadow-[0_0_8px_#6b7280]"></span>
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
